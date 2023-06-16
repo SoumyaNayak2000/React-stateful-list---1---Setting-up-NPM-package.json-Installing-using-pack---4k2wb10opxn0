@@ -1,5 +1,5 @@
-import React from 'react'
 
+import React, { useState } from 'react';
 import '../styles/App.css';
 
 const data = {
@@ -28,8 +28,30 @@ const data = {
 }
 const App = () => {
 
+    const [selectedYear, setSelectedYear] = useState(null);
+
   return (
     <div id="main">
+
+    <select onChange={handleYearChange}>
+        <option value={null}></option>
+        {Object.keys(data).map((year) => (
+          <option key={year} value={year}>
+            {year}
+          </option>
+        ))}
+      </select>
+
+  <div id="selected-year">
+        {selectedYear ? `Selected year - ${selectedYear}` : 'No year selected'}
+      </div>
+        {selectedYear && (
+        <ul>
+          {data[selectedYear].map((movie) => (
+            <li key={movie}>{movie}</li>
+          ))}
+        </ul>
+      )}
       
     </div>
   )
