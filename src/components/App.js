@@ -34,7 +34,7 @@ const App = () => {
     <div id="main">
 
     <select onChange={handleYearChange}>
-        <option value={null}>no year selected</option>
+        <option value={null}></option>
         {Object.keys(data).map((year) => (
           <option key={year} value={year}>
             {year}
